@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Календарь на javascript">
+		<title>Календарь на javascript</title>
+		<!--build:css--><!--endbuild-->
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="content">
+				<div class="description_container">
+					<div class="description">
+						<h3>Функция-конструктор Calendar()</h3>
+						<p>Данная функция написана на "нативном" javascript. При создании элемента необходимо в функцию передать объект, содержащий следующие параметры:
+						</p>
+						<p class="attr">
+							<span>new Calendar ({</span><br>
+							<span>parentElem:</span> родительский контейнер (объект, предварительно созданный на странице),<br>
+							<span>width:</span> ширина контейнера календаря в px или % от ширины родительского блока,<br>
+							<span>numberBgImg:</span> количество фоновых изображений, которые находятся в папке ./img/,<br>
+							<span>idImgWrap:</span> id контейнера фоновых изображений,<br>
+							<span>idCalendarWrap:</span> id контейнера календаря,<br>
+							<span>idPrevBtn:</span> id кнопки назад,<br>
+							<span>idNextBtn:</span> id кнопки вперед,<br>
+							<span>idLink:</span> id ссылки для отображения текущей даты/года/диапазона лет,<br>
+							<span>idDayOfWeek:</span> id таблицы содержащей дни недели,<br>
+							<span>idDateTable:</span> id таблицы содержащей дни выбранного месяца,<br>
+							<span>idMonthTable:</span> id таблицы месяцев,<br>
+							<span>idYearTable:</span> id таблицы содержащей диапазон лет,<br>
+							<span>idYearRangeTable:</span> id таблицы содержащей расширенный диапазон лет<br>
+							<span>});</span>
+						</p>
+						<p>
+							Для добавления календаря на страницу нажмите кнопку "добавить календарь", все указанные выше параметры будут переданы в функцию автоматически. Количество календарей не ограничено. Добавленные календари можно удалить соответствующей кнопкой, которая появится после добавления первого календаря.
+						</p>
+						<button id="add_calendar">добавить календарь</button>
+					</div>
+				</div>
+				<div class="calendars">
+					<div class="for_new_calendars"></div>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="left">
+					<span class="works">Другие мои работы</span>
+				</div>
+				<div class="right">
+					<p><span>&copy;</span>2017 Владимир Македонов</p>
+					<a href="mailto:nicon-83@mail.ru">nicon-83@mail.ru</a>
+				</div>
+			</footer>
+		</div>
+		<!--build:js--><!--endbuild-->
+	</body>
+</html>

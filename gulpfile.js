@@ -10,6 +10,8 @@ var gulp = require('gulp'),
 	 rimraf = require('rimraf'),
 	 imagemin = require('gulp-imagemin'),
 	 pngquant = require('imagemin-pngquant'),
+	 smartgrid = require('smart-grid'),
+	 gcmq = require('gulp-group-css-media-queries'),
 	 livereload = require('livereload');
 
 var settings = {
@@ -67,6 +69,38 @@ var path = {
 	clean: './build'
 };
 
+var gridSettings = {
+	outputStyle: 'less',
+	columns: 12,
+	offset: '30px',
+	container: {
+		maxWidth: '1200px',
+		fields: '30px'
+	},
+	breakPoints:{
+		lg:{
+			width: '1100px',
+			fields: '30px'
+		},
+		md:{
+			width: '960px',
+			fields: '15px'
+		},
+		sm:{
+			width: '780px',
+			fields: '15px'
+		},
+		xs:{
+			width: '560px',
+			fields: '15px'
+		}
+	}
+};
+
+gulp.task('grid', function (){
+	smartgrid('./dev/style/imports/', gridSettings);
+});
+
 gulp.task('clean', function (cb){
 	rimraf(path.clean, cb);
 });
@@ -82,6 +116,7 @@ gulp.task('htmlCreator', function(){
 gulp.task('cssCreator', function(){
 	gulp.src(path.src.style)
 		.pipe(less())
+		.pipe(gcmq())
 		.pipe(autoprefixer(settings.autoprefixer))
 		.pipe(minifyCss(settings.minifyCss))
 		.pipe(gulp.dest(path.build.css))

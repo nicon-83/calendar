@@ -6,30 +6,72 @@ body{
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
-	min-width: 960px;
+	min-width: 320px;
 	background: @base-bg;
 }
 .content{
 	flex: 1 0 auto;
-	min-height: 815px;
 	display: flex;
-	flex-flow: row nowrap;
+	flex-wrap: wrap;
+	@media screen and (min-width: @width-large){
+		min-height: 815px;
+		flex-wrap: nowrap;
+	}
+	.border{
+		width: 95%;
+		height: 4px;
+		margin: auto;
+		position: relative;
+		background: @base-bg;
+		&::before{
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: -6px;
+			border: 2px solid transparent;
+			border-right: 2px solid @base-bg;
+			transform: scale(3);
+		}
+		&::after{
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			right: -8px;
+			border: 2px solid transparent;
+			border-left: 2px solid @base-bg;
+			transform: scale(3);
+		}
+		@media screen and (min-width: @width-large){
+			display: none;
+		}
+	}
 }
 .description_container{
-	box-sizing: border-box;
 	position: relative;
-	flex-basis: 555px;
-	padding: 15px 15px 15px 50px;
+	box-sizing: border-box;
+	flex-basis: 100%;
 	background: @content-bg;
+	padding: 1rem;
+	@media screen and (min-width: @width-phones){
+		padding: 1rem 3rem;
+	}
+	@media screen and (min-width: @width-large){
+		flex-basis: 555px;
+		padding: 1rem 1rem 1rem 3rem;
+	}
 	.description{
-		position: fixed;
-		width: 460px;
 		font-family: @description-ff;
+		@media screen and (min-width: @width-large){
+			position: fixed;
+			width: 460px;
+		}
 		p{
 			font-size: 0.9rem;
 			text-indent: 20px;
 			text-align: justify;
-			margin: 15px 0;
+			margin: 1rem 0;
 			&.attr {
 				text-indent: 0;
 			}
@@ -37,7 +79,7 @@ body{
 		h3{
 			font-weight: bold;
 			text-align: center;
-			margin-bottom: 20px;
+			margin: 1rem 0;
 		}
 		span{
 			font-weight: bold;
@@ -48,7 +90,7 @@ body{
 			height: 45px;
 			background: @base-bg;
 			font-family: @footer-ff-regular;
-			margin: 10px;
+			margin: 0.625rem;
 			cursor: pointer;
 			&:focus{
 				outline: none;
@@ -59,79 +101,122 @@ body{
 			}
 		}
 	}
-	&:before{
-		content: '';
-		position: absolute;
-		left: -342px;
-		top: 0px;
-		display: block;
-		border: 380px solid transparent;
-		border-left: 380px solid @base-bg;
-		transform: scaleX(0.1);
+	@media screen and (min-width: @width-phones){
+		&::before{
+			content: '';
+			position: absolute;
+			display: block;
+			top: 0px;
+			left: -270px;
+			border: 300px solid transparent;
+			border-left: 300px solid @base-bg;
+			transform: scaleX(0.1);
+		}
+		&::after{
+			content: '';
+			position: absolute;
+			display: block;
+			top: 0px;
+			right: -270px;
+			border: 300px solid transparent;
+			border-right: 300px solid @base-bg;
+			transform: scaleX(0.1);
+		}
 	}
-	&:after{
-		content: '';
-		position: absolute;
-		left: 137px;
-		top: 0px;
-		display: block;
-		border: 380px solid transparent;
-		border-right: 380px solid @base-bg;
-		transform: scaleX(0.1);
+	@media screen and (min-width: @width-large){
+		&::before{
+			border: 380px solid transparent;
+			border-left: 380px solid @base-bg;
+			left: -343px;
+		}
+		&::after{
+			border: 380px solid transparent;
+			border-right: 380px solid @base-bg;
+			left: 138px;
+		}
 	}
 }
 .calendars{
 	flex: 1;
 	position: relative;
-	padding: 0px 40px 0 40px;
-	margin-left: 20px;
+	padding: 1rem;
 	background: @content-bg;
 	z-index: 5;
-	&:before{
-		content: '';
-		position: absolute;
-		left: -342px;
-		top: 0px;
-		display: block;
-		border: 380px solid transparent;
-		border-left: 380px solid @base-bg;
-		transform: scaleX(0.1);
+	@media screen and (min-width: @width-phones){
+		min-height: 600px;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		&::before{
+			content: '';
+			position: absolute;
+			top: 0px;
+			left: -270px;
+			display: block;
+			border: 300px solid transparent;
+			border-left: 300px solid @base-bg;
+			transform: scaleX(0.1);
+		}
+		&::after{
+			content: '';
+			position: absolute;
+			top: 0px;
+			right: -270px;
+			display: block;
+			border: 300px solid transparent;
+			border-right: 300px solid @base-bg;
+			transform: scaleX(0.1);
+		}
 	}
-	&:after{
-		content: '';
-		position: absolute;
-		right: -342px;
-		top: 0px;
-		display: block;
-		border: 380px solid transparent;
-		border-right: 380px solid @base-bg;
-		transform: scaleX(0.1);
+	@media screen and (min-width: @width-large){
+		margin-left: 1rem;
+		&::before{
+			border: 380px solid transparent;
+			border-left: 380px solid @base-bg;
+			left: -343px;
+		}
+		&::after{
+			border: 380px solid transparent;
+			border-right: 380px solid @base-bg;
+			right: -343px;
+		}
 	}
 }
 .for_new_calendars{
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
-	padding: 15px 0;
+	align-items: baseline;
 }
 .new_calendar{
 	box-shadow: 2px 2px 5px rgba(44,44,44,.7);
-	margin: 10px;
+	margin-top: 0.7rem;
 	flex-basis: 380px;
+	@media screen and (min-width: @width-large){
+		margin: 2rem 1rem 0 1rem;
+		&:first-child{
+			margin-top: 0;
+		}
+	}
 }
 .footer{
 	flex: 0 0 auto;
-	padding: 10px 20px;
+	padding: 0.5rem;
 	text-align: center;
 	background: @footer-bg;
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-around;
-	letter-spacing: 1px;
-	word-spacing: 3px;
+	justify-content: space-between;
 	font-family: @footer-ff;
 	color: @content-bg;
 	z-index: 10;
+	font-size: 0.75rem;
+	@media screen and (min-width: @width-tablet){
+		justify-content: space-around;
+		font-size: 1rem;
+		word-spacing: 3px;
+		letter-spacing: 1px;
+		padding: 1rem;
+	}
 	a{
 		color: @content-bg;
 		font-family: @footer-ff-italic;
@@ -142,7 +227,7 @@ body{
 	}
 	.left{
 		text-align: left;
-		line-height: 50px;
+		line-height: 25px;
 		.works{
 			cursor: pointer;
 			&:hover{
@@ -153,11 +238,14 @@ body{
 	.right{
 		text-align: right;
 		line-height: 25px;
+		span{
+			font-size: 1.2rem;
+		}
 	}
 }
 .my_works{
-	width:320px;
-	font-size: 0.9rem;
+	width: 290px;
+	font-size: 0.75rem;
 	line-height: 2rem;
 	word-spacing: normal;
 	letter-spacing: 2px;
@@ -165,6 +253,10 @@ body{
 	background: @content-bg;
 	box-shadow: 0px 2px 5px rgba(0,0,0,0.8);
 	z-index: 10;
+	@media screen and (min-width: @width-tablet){
+		font-size: 0.9rem;
+		width:340px;
+	}
 	a{
 		font-style: normal;
 		color: #000;
@@ -173,7 +265,7 @@ body{
 		color: #000;
 		cursor: auto;
 	}
-	&:after{
+	&::after{
 		content: '';
 		display: block;
 		border: 15px solid transparent;
